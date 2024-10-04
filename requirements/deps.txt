@@ -21,8 +21,14 @@ h11==0.14.0
     # via uvicorn
 python-dotenv==1.0.1
     # via -r requirements/base.in
+python-frontmatter==1.1.0
+    # via -r requirements/base.in
+pyyaml==6.0.2
+    # via python-frontmatter
 sqlparse==0.5.1
     # via django
+toml==0.10.2
+    # via -r requirements/base.in
 types-pytz==2024.2.0.20241003
     # via django-stubs
 types-pyyaml==6.0.12.20240917
