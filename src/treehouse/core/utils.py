@@ -1,13 +1,15 @@
-import typing as t
-from slugify import slugify
 import os
+import typing as t
 from dataclasses import dataclass, replace
 from datetime import datetime
-import markdown
 
 import frontmatter
+import markdown
+from slugify import slugify
 
 loaded_posts = {}
+
+
 @dataclass
 class Post:
     filename: str
@@ -25,6 +27,7 @@ class Post:
     @property
     def content(self) -> str:
         return markdown.markdown(self.markdown_content, extensions=["fenced_code"])
+
     @property
     def slug(self) -> str:
         return slugify(os.path.splitext(self.filename)[0])
