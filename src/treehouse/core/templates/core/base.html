@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Hare's Treehouse{% endblock %}</title>
+    <style>
+        a.link {
+            text-decoration: underline;
+            color: #000;
+        }
+        a.link:hover {
+            background-color: rgb(225, 225, 225);
+        }
+        p.text {
+            font-size: 1.1em;
+        }
+        body {
+            margin-left: 10vw;
+            margin-right: 10vw;
+        }
+        
+
+    </style>
+{% block head %}{% endblock %}
+</head>
+<body>
+<h1>Hare's Treehouse</h1>
+<h2><a href="/" class="link">Home</a>&nbsp;&nbsp;<a href="{% url "core:about" %}" class="link">About</a></h2>
+<hr>
+<main>
+{% block main %}{% endblock %}
+</main>
+
+<hr>
+© 2024 Hare
+</body>
+</html>
