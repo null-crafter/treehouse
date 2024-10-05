@@ -9,7 +9,7 @@ from django.templatetags.static import static
 
 
 def favicon(request):
-    return redirect(static("favicon.ico"), permanent=True)
+    return redirect(static("favicon.ico"), permanent=False)
 
 
 # Create your views here.
