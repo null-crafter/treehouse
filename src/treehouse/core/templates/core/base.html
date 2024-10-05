@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,10 +35,11 @@
 {% block head %}{% endblock %}
 </head>
 <body>
-<h1>Hare's Treehouse</h1>
+<h1><img height="40vh" alt="Hare Pic" src="{% static 'bunny.png' %}">Hare's Treehouse</h1>
 <h2>
     <a href="/" class="link">Home</a>&nbsp;&nbsp;
     <a href="{% url "core:posts" %}" class="link">Posts</a>&nbsp;&nbsp;
+    <a href="{% url "core:github" %}" class="link">GitHub</a>&nbsp;&nbsp;
     <a href="{% url "core:about" %}" class="link">About</a>&nbsp;&nbsp;
 </h2>
 <hr>
