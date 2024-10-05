@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +25,7 @@ POSTS_DIR = BASE_DIR / "core" / "posts"
 SECRET_KEY = "django-insecure-np+sh2r&8$$0dh#!10imzwu2&xiaudo%&9h$^u=ne-cr1ir@&k"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get("DEBUG", False)
 
 ALLOWED_HOSTS = ["hare.harewood.xyz"]
 if DEBUG:
