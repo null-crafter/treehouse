@@ -4,6 +4,7 @@ venv:
 dev:
 	cd src/treehouse && DEBUG=True python manage.py runserver 127.0.0.1:9000
 prod:
+	cd src/treehouse && python manage.py collectstatic --noinput
 	cd src/treehouse && gunicorn -b 127.0.0.1:9000 -k gevent --workers `nproc` treehouse.wsgi:application
 devdeps:
 	python -m pip install -U pip-tools
