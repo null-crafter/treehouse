@@ -4,7 +4,12 @@ from datetime import timezone
 from core.utils import Post, loaded_posts
 from django.conf import settings
 from django.http import Http404, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from django.templatetags.static import static
+
+
+def favicon(request):
+    return redirect(static("favicon.ico"), permanent=True)
 
 
 # Create your views here.
