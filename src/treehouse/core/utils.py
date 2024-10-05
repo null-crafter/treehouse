@@ -1,6 +1,6 @@
 import os
 import typing as t
-from dataclasses import dataclass, replace
+from dataclasses import dataclass, replace, field
 from datetime import datetime
 
 import frontmatter
@@ -19,6 +19,7 @@ class Post:
     categories: t.List[str]
     tags: t.List[str]
     is_draft: bool
+    author: str = field(default="Hare")
 
     @property
     def unique_id(self) -> str:
@@ -39,10 +40,12 @@ class Post:
             filename=os.path.basename(path),
             title=p.metadata["title"],
             date=p.metadata["date"],
-            is_draft=p.metadata["draft"],
-            categories=p.metadata["categories"],
-            tags=p.metadata["tags"],
+            is_draft=p.metadata.get("draft", False),
+            categories=p.metadata.get("categories", []),
+            tags=p.metadata.get("tags", []),
+            author=p.metadata.get("author", "Hare"),
             markdown_content=p.content,
         )
-        loaded_posts[loaded_post.slug] = loaded_post
+        if loaded_post.is_draft is False:
+            loaded_posts[loaded_post.slug] = loaded_post
         return loaded_post

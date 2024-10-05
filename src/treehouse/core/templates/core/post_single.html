@@ -3,4 +3,10 @@
 {% block main %} 
 <h1>{{ post.title }}</h1>
 {{ post.content | safe}}
+<br><br>
+<p>Posted at {{ post.date | date:"H:m, Y.M.d" }}</p>
+<p>Author: {{ post.author }}</p>
+<p>Categories: {% for c in post.categories%}{{ c }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+<p>Tags: {% for t in post.tags%}{{ t }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+
 {% endblock %}

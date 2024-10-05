@@ -24,7 +24,7 @@ POSTS_DIR = BASE_DIR / "core" / "posts"
 SECRET_KEY = "django-insecure-np+sh2r&8$$0dh#!10imzwu2&xiaudo%&9h$^u=ne-cr1ir@&k"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["hare.harewood.xyz"]
 if DEBUG:
