@@ -1,9 +1,10 @@
 django==4.2.*
 django-stubs==4.2.*
-uvicorn
 python-dotenv
 python-slugify
 markdown
+whitenoise
+gunicorn[gevent]
 
 python-frontmatter
 toml
