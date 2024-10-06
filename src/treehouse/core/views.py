@@ -8,6 +8,7 @@ from django.shortcuts import redirect, render
 from django.templatetags.static import static
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
+from slugify import slugify
 
 
 def favicon(request):
@@ -32,7 +33,14 @@ def about(request):
 
 
 def post_list(request):
-
+    posts = loaded_posts.values()
+    tags = set()
+    categories = set()
+    for p in posts:
+        categories = categories.union(set(p.categories))
+        tags = tags.union(set(p.tags))
+    tags = {slugify(tag): tag for tag in sorted(list(tags))}
+    categories = {slugify(c): c for c in sorted(list(categories))}
     return render(
         request,
         "core/posts.html",
@@ -40,7 +48,9 @@ def post_list(request):
             "posts": sorted(
                 loaded_posts.values(),
                 key=lambda p: -p.date.replace(tzinfo=timezone.utc).timestamp(),
-            )
+            ),
+            "tags": tags,
+            "categories": categories,
         },
     )
 
