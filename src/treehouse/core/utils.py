@@ -1,14 +1,15 @@
 import os
 import typing as t
+from collections import defaultdict
 from dataclasses import dataclass, field, replace
 from datetime import datetime, timezone
-from collections import defaultdict
 
 import frontmatter
 import markdown
 from slugify import slugify
 
 loaded_data = defaultdict(dict)
+
 
 @dataclass
 class Post:
@@ -27,7 +28,9 @@ class Post:
 
     @property
     def content(self) -> str:
-        return markdown.markdown(self.markdown_content, extensions=["fenced_code", "codehilite"])
+        return markdown.markdown(
+            self.markdown_content, extensions=["fenced_code", "codehilite"]
+        )
 
     @property
     def slug(self) -> str:

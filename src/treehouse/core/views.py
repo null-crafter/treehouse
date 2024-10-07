@@ -88,7 +88,7 @@ def tag(request, slug: str):
         raise Http404()
     return render(request, "core/tag.html", {"posts": posts, "tag": tag})
 
-        
+
 def post_single(request, slug: str):
     post = loaded_data["posts"].get(slug)
     if post is None:
