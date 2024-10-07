@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+{% block title %}Tag: {{ tag }}{% endblock %}
+{% block head %}
+<style>
+    #post-list {
+        margin-left: 5vw;
+        margin-right: 5vw;
+    }
+    .post {
+        font-size: 1.1em;
+    }
+</style>
+{% endblock %}
+{% block main %} 
+<h1>Tag: {{ tag }}</h1>
+<div id="post-list">
+{% for post in posts %}
+    <p class="post"><a href="/post/{{post.slug}}/" class="link">{{ post.title }} - {{ post.date | date:"Y.M.d H:m"}}</a></p>
+{% endfor %}
+</div>
+
+{% endblock %}

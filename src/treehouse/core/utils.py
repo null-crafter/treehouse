@@ -1,14 +1,14 @@
 import os
 import typing as t
 from dataclasses import dataclass, field, replace
-from datetime import datetime
+from datetime import datetime, timezone
+from collections import defaultdict
 
 import frontmatter
 import markdown
 from slugify import slugify
 
-loaded_posts = {}
-
+loaded_data = defaultdict(dict)
 
 @dataclass
 class Post:
@@ -27,7 +27,7 @@ class Post:
 
     @property
     def content(self) -> str:
-        return markdown.markdown(self.markdown_content, extensions=["fenced_code"])
+        return markdown.markdown(self.markdown_content, extensions=["fenced_code", "codehilite"])
 
     @property
     def slug(self) -> str:
@@ -47,5 +47,16 @@ class Post:
             markdown_content=p.content,
         )
         if loaded_post.is_draft is False:
-            loaded_posts[loaded_post.slug] = loaded_post
+            loaded_data["posts"][loaded_post.slug] = loaded_post
+            for c in loaded_post.categories:
+                if c not in loaded_data["categories"]:
+                    loaded_data["categories"][slugify(c)] = c
+            for tag in loaded_post.tags:
+                if tag not in loaded_data["tags"]:
+                    loaded_data["tags"][slugify(tag)] = tag
+
         return loaded_post
+
+
+def timestamp_from_datetime(dt: datetime) -> int:
+    return dt.replace(tzinfo=timezone.utc).timestamp()

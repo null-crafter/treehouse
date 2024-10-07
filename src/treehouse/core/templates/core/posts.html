@@ -19,8 +19,8 @@
 {% endfor %}
 </div>
 
-{% comment %} <p>Categories: {% for slug, c in categories.items %}<a class="link" href="/posts/category/{{ slug }}">{{ c }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</p> {% endcomment %}
-<p>Categories: {% for _, c in categories.items %}{{ c }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
-{% comment %} <p>Tags: {% for slug, tag in tags.items %}<a class="link" href="/posts/tag/{{ slug }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</p> {% endcomment %}
-<p>Tags: {% for _, tag in tags.items %}{{ tag }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+<p>Categories: {% for slug, c in categories.items %}<a class="link" href="/category/{{ slug }}">{{ c }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+{% comment %} <p>Categories: {% for _, c in categories.items %}{{ c }}{% if not forloop.last %}, {% endif %}{% endfor %}</p> {% endcomment %}
+<p>Tags: {% for slug, tag in tags.items %}<a class="link" href="/tag/{{ slug }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+{% comment %} <p>Tags: {% for _, tag in tags.items %}{{ tag }}{% if not forloop.last %}, {% endif %}{% endfor %}</p> {% endcomment %}
 {% endblock %}
