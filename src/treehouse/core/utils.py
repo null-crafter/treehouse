@@ -1,7 +1,7 @@
 import os
 import typing as t
-from collections import defaultdict
-from dataclasses import dataclass, field, replace
+from collections import OrderedDict, defaultdict
+from dataclasses import dataclass, field
 from datetime import datetime, timezone
 
 import frontmatter
@@ -61,5 +61,9 @@ class Post:
         return loaded_post
 
 
-def timestamp_from_datetime(dt: datetime) -> int:
+def timestamp_from_datetime(dt: datetime) -> float:
     return dt.replace(tzinfo=timezone.utc).timestamp()
+
+
+def sorted_dict(d: t.Mapping, *args, **kwargs) -> OrderedDict:
+    return OrderedDict(sorted(d.items(), *args, **kwargs))

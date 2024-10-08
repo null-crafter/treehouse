@@ -1,11 +1,8 @@
-import os
-from datetime import timezone
-
-from core.utils import Post, loaded_data, timestamp_from_datetime
+from core.utils import loaded_data, sorted_dict, timestamp_from_datetime
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.core.validators import URLValidator
-from django.http import Http404, HttpResponse
+from django.http import Http404
 from django.shortcuts import redirect, render
 from django.templatetags.static import static
 from slugify import slugify
@@ -35,14 +32,6 @@ def about(request):
 
 
 def post_list(request):
-    posts = loaded_data["posts"].values()
-    tags = set()
-    categories = set()
-    for p in posts:
-        categories = categories.union(set(p.categories))
-        tags = tags.union(set(p.tags))
-    tags = {slugify(tag): tag for tag in sorted(list(tags))}
-    categories = {slugify(c): c for c in sorted(list(categories))}
     return render(
         request,
         "core/posts.html",
@@ -51,8 +40,10 @@ def post_list(request):
                 loaded_data["posts"].values(),
                 key=lambda p: -timestamp_from_datetime(p.date),
             ),
-            "tags": tags,
-            "categories": categories,
+            "tags": sorted_dict(loaded_data["tags"], key=lambda item: item[0]),
+            "categories": sorted_dict(
+                loaded_data["categories"], key=lambda item: item[0]
+            ),
         },
     )
 
