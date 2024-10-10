@@ -4,7 +4,7 @@
 <h1>{{ post.title }}</h1>
 {{ post.content | safe}}
 <br><br>
-<p>Posted at {{ post.date | date:"H:M, Y.m.d" }}</p>
+<p>Posted at {{ post.date | date:"H:i, Y.M.d" }}</p>
 <p>Author: {{ post.author }}</p>
 <p>Categories: {% for c in post.categories%}<a class="link" href="/category/{{c}}/">{{ c }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</p>
 <p>Tags: {% for t in post.tags%}<a class="link" href="/tag/{{t}}/">{{ t }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</p>
