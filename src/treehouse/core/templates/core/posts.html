@@ -16,9 +16,9 @@
 <div id="post-list">
 {% for post in posts %}
     {% if post.is_external %}
-    <p class="post"><a href="{{ post.external_url }}" class="link">{{ post.title }} - {{ post.date | date:"Y.M.d H:m"}}</a></p>
+    <p class="post"><a href="{{ post.external_url }}" class="link">{{ post.title }} - {{ post.date | date:"Y.m.d H:M"}}</a></p>
     {% else %}
-    <p class="post"><a href="/post/{{post.slug}}/" class="link">{{ post.title }} - {{ post.date | date:"Y.M.d H:m"}}</a></p>
+    <p class="post"><a href="/post/{{post.slug}}/" class="link">{{ post.title }} - {{ post.date | date:"Y.m.d H:M"}}</a></p>
     {% endif %}
 {% endfor %}
 </div>
