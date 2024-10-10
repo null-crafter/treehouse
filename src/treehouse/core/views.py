@@ -5,7 +5,6 @@ from django.core.validators import URLValidator
 from django.http import Http404
 from django.shortcuts import redirect, render
 from django.templatetags.static import static
-from slugify import slugify
 
 
 def favicon(request):

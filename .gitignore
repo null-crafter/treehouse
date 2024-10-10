@@ -3,5 +3,7 @@ __pycache__
 .venv
 *.py[oc]
 db.sqlite3
+.vscode
+.idea
 
 /src/treehouse/static_root

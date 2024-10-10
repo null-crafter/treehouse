@@ -21,7 +21,10 @@ class Post:
     tags: t.List[str]
     is_draft: bool
     author: str = field(default="Hare")
-
+    external_url: t.Optional[str] = None
+    @property
+    def is_external(self) -> bool:
+        return bool(self.external_url)
     @property
     def unique_id(self) -> str:
         return self.filename
@@ -48,6 +51,7 @@ class Post:
             tags=p.metadata.get("tags", []),
             author=p.metadata.get("author", "Hare"),
             markdown_content=p.content,
+            external_url=p.metadata.get("external_url")
         )
         if loaded_post.is_draft is False:
             loaded_data["posts"][loaded_post.slug] = loaded_post
