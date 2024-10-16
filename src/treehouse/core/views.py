@@ -17,13 +17,7 @@ def home(request):
 
 
 def github(request):
-    github_url = getattr(settings, "SOCIALS", {}).get("github")
-    validate_url = URLValidator(schemes=["https", "http"])
-    try:
-        validate_url(github_url)
-    except ValidationError:
-        raise Http404()
-    return redirect(github_url)
+    return redirect("https://github.com/null-crafter")
 
 
 def about(request):
