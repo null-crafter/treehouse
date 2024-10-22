@@ -28,9 +28,9 @@
         }
         pre {
             border: 1px #000 dotted;
-            overflow: scroll; 
+            overflow: scroll;
         }
-        
+
 
     </style>
 {% block head %}{% endblock %}
@@ -41,6 +41,7 @@
     <a href="/" class="link">Home</a>&nbsp;&nbsp;
     <a href="{% url "core:posts" %}" class="link">Posts</a>&nbsp;&nbsp;
     <a href="{% url "core:github" %}" class="link">GitHub</a>&nbsp;&nbsp;
+    <a href="{% url "core:akkoma" %}" class="link">Akkoma</a>&nbsp;&nbsp;
     <a href="{% url "core:about" %}" class="link">About</a>&nbsp;&nbsp;
 </h2>
 <hr>

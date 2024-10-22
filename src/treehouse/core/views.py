@@ -19,6 +19,9 @@ def home(request):
 def github(request):
     return redirect("https://github.com/null-crafter")
 
+def akkoma(request):
+    return redirect("https://akko.harewood.xyz/hare")
+
 
 def about(request):
     return render(request, "core/about.html")
