@@ -3,7 +3,6 @@ import typing as t
 from collections import OrderedDict, defaultdict
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
-
 import frontmatter
 import markdown
 from slugify import slugify
@@ -44,7 +43,7 @@ class Post:
         p = frontmatter.load(path)
         loaded_post = Post(
             filename=os.path.basename(path),
-            title=p.metadata["title"],
+            title=str(p.metadata["title"]),
             date=p.metadata["date"],
             is_draft=p.metadata.get("draft", False),
             categories=p.metadata.get("categories", []),

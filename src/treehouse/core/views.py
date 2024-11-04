@@ -1,11 +1,10 @@
 from core.utils import loaded_data, sorted_dict, timestamp_from_datetime
-from django.conf import settings
-from django.core.exceptions import ValidationError
-from django.core.validators import URLValidator
 from django.http import Http404
 from django.shortcuts import redirect, render
 from django.templatetags.static import static
+from django.http import Http404
 
+from django.http import Http404
 
 def favicon(request):
     return redirect(static("favicon.ico"))
